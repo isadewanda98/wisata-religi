@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Wisata Religi UMS 2018 // HACKER v2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050b05;
+            font-family: 'Courier New', 'Fira Code', 'JetBrains Mono', monospace;
+            color: #2eff7a;
+            padding: 1.2rem;
+            line-height: 1.5;
+        }
+
+        /* container terminal */
+        .shell {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #0b0f0b;
+            border: 1px solid #1f9f2f;
+            border-radius: 16px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* header bar */
+        .shell-header {
+            background: #081008;
+            padding: 8px 18px;
+            border-bottom: 1px solid #1f9f2f;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .shell-prompt {
+            color: #74ee74;
+        }
+        .shell-path {
+            color: #3cb371;
+        }
+        .blink {
+            animation: blinkCursor 1s step-end infinite;
+        }
+        @keyframes blinkCursor {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* isi terminal */
+        .shell-body {
+            padding: 28px 26px;
+        }
+
+        /* tulisan khas hacker */
+        .line-cmd {
+            border-left: 3px solid #2eff7a;
+            padding-left: 18px;
+            margin-bottom: 32px;
+        }
+        .ascii-title {
+            font-size: 1.7rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        .ascii-title span {
+            color: #9eff9e;
+            font-size: 0.9rem;
+        }
+
+        /* section elegan */
+        .block {
+            margin-bottom: 38px;
+            border-top: 1px solid #1f4f1f;
+            padding-top: 18px;
+        }
+        .block-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            color: #b4ffb4;
+        }
+        .block-head .sign {
+            color: #2eff7a;
+        }
+
+        /* slideshow modern */
+        .slideshow-border {
+            border: 1px solid #2a6e2a;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #020602;
+        }
+        .slide-img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.9) contrast(1.05);
+        }
+        .nav-slide {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 12px 0 10px;
+        }
+        .nav-btn {
+            background: #0f1f0f;
+            border: 1px solid #2eff7a;
+            color: #2eff7a;
+            font-family: monospace;
+            font-size: 0.9rem;
+            padding: 4px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .nav-btn:hover {
+            background: #2eff7a;
+            color: #000;
+        }
+        .dot-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding-bottom: 12px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #2a5a2a;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .dot.active {
+            background: #2eff7a;
+            box-shadow: 0 0 6px #2eff7a;
+        }
+
+        /* video & tiktok */
+        .media-border {
+            border: 1px solid #2a6e2a;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+        .ratio16 {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .ratio16 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .tiktok-card {
+            border: 1px solid #2a6e2a;
+            border-radius: 14px;
+            padding: 12px;
+            background: #0a100a;
+        }
+
+        /* link command line */
+        .link-cmd {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 10px;
+        }
+        .cmd-item {
+            background: #0e140e;
+            border: 1px solid #2a6e2a;
+            border-radius: 40px;
+            padding: 8px 20px;
+            text-decoration: none;
+            color: #c2f0c2;
+            font-family: monospace;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.1s;
+        }
+        .cmd-item:hover {
+            background: #1f3a1f;
+            border-color: #2eff7a;
+            color: #fff;
+        }
+
+        hr {
+            border-color: #1f4f1f;
+            margin: 18px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 14px;
+            font-size: 0.7rem;
+            border-top: 1px solid #1f4f1f;
+            color: #6fa86f;
+        }
+        @media (max-width: 640px) {
+            .shell-body { padding: 16px; }
+            .ascii-title { font-size: 1.3rem; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div class="shell">
+    <div class="shell-header">
+        <span class="shell-prompt">✗ user@wisata-religi:~$</span>
+        <span class="shell-path">/ums2018/nostalgia</span>
+        <span class="blink">❯_</span>
+    </div>
+    <div class="shell-body">
+
+        <!-- header awal -->
+        <div class="line-cmd">
+            <div class="ascii-title"># WISATA RELIGI UMS 2018 <span>// terminal edition</span></div>
+            <div>>_ database kenangan & perjalanan spiritual</div>
+            <div style="color:#6f9e6f;">[ status: grup aktif | dokumentasi abadi ]</div>
+        </div>
+
+        <!-- tentang grup minimal -->
+        <div class="block">
+            <div class="block-head"><span class="sign">⟫</span> about.md</div>
+            <p>Wisata Religi angkatan 2018 — kumpulan mahasiswa UMS dalam bingkai kebersamaan dan nilai religi. Arsip foto, video, dan tautan album tersedia di bawah.</p>
+            <p style="color:#9ad49a;">$ echo "persaudaraan dalam satu perjalanan"</p>
+        </div>
+
+        <!-- SLIDESHOW FOTO (area yang bisa diganti gambar) -->
+        <div class="block">
+            <div class="block-head"><span class="sign">📸</span> gallery --scan</div>
+            <div class="slideshow-border">
+                <!-- daftar gambar: GANTI URL DI SINI dengan foto grup kamu termasuk foto google photos yang diinginkan -->
+                <div class="slide-container">
+                    <img class="slide-img" id="mainSlide" src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&w=1000&q=80" alt="slide utama">
+                </div>
+                <div class="nav-slide">
+                    <button class="nav-btn" id="prevSlide">◀ prev</button>
+                    <button class="nav-btn" id="nextSlide">next ▶</button>
+                </div>
+                <div class="dot-group" id="dotIndicator"></div>
+            </div>
+            <div style="font-size:0.7rem; margin-top: 8px;">$ slideshow --loop --interval=5s | gunakan tombol navigasi</div>
+        </div>
+
+        <!-- YouTube -->
+        <div class="block">
+            <div class="block-head"><span class="sign">🎞️</span> youtube_stream</div>
+            <div class="media-border">
+                <div class="ratio16">
+                    <iframe src="https://www.youtube.com/embed/KEovvHqDoQY" title="dokumenter ums" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- TikTok -->
+        <div class="block">
+            <div class="block-head"><span class="sign">📲</span> tiktok_feed</div>
+            <div class="tiktok-card">
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@ihsannsss_/video/7184080977960979738" data-video-id="7184080977960979738" style="max-width: 100%; min-width: 260px; background: transparent; margin:0 auto;"> 
+                    <section> 
+                        <a target="_blank" title="@ihsannsss_" href="https://www.tiktok.com/@ihsannsss_?refer=embed">@ihsannsss_</a> 
+                        <p>Mini Vlog Ep.1 Camping Ceria, pertengahan desember lalu. Awalnya udah males ngedit, tapi sayang kalau ga di apa apain footage nya. Yaa, jadinya begini aja deh wkwk</p> 
+                        <a target="_blank" title="♬ Lagu piala dunia qatar word cup - Onel1443" href="https://www.tiktok.com/music/Lagu-piala-dunia-qatar-word-cup-7166101838964459522?refer=embed">♬ Lagu piala dunia qatar word cup - Onel1443</a> 
+                    </section> 
+                </blockquote>
+                <script async src="https://www.tiktok.com/embed.js"></script>
+            </div>
+        </div>
+
+        <!-- Link album & drive -->
+        <div class="block">
+            <div class="block-head"><span class="sign">📁</span> mount_arsip</div>
+            <div class="link-cmd">
+                <a href="https://drive.google.com/drive/folders/1l-IdieVp_-iGIhDjkb-umV6PadOGO1rB" target="_blank" class="cmd-item"><i class="fab fa-google-drive"></i> google_drive/album_ums</a>
+                <a href="https://drive.google.com/file/d/1Qarpjvzlk-tW1zjMqC0ocYUZa8xS9rNZ/edit" target="_blank" class="cmd-item"><i class="fas fa-file-pdf"></i> dokument_spesial.pdf</a>
+                <a href="#" onclick="alert('🔐 extra album: kontak admin grup untuk akses penuh'); return false;" class="cmd-item"><i class="fas fa-database"></i> encrypted_backup</a>
+            </div>
+            <hr>
+            <div class="shell-prompt" style="font-size:0.75rem;">$ ls -la total 2018MB (kenangan terjamin)</div>
+        </div>
+        <div style="padding: 12px; border-left: 3px solid #2eff7a; background: #07100730; margin-top: 10px;">
+            <i class="fas fa-code"></i> "Kami simpan dalam repository hati & server kenangan" — Wisata Religi UMS 2018
+        </div>
+    </div>
+    <footer>
+        <span>wisata_religi_ums@hacker_shell:~$</span> © 2026 | nostalgia mode | <span style="background:#2eff7a; color:#000; padding:0 4px;">_</span>
+    </footer>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // SLIDESHOW DENGAN GAMBAR BISA DIUBAH (sesuai koleksi grup)
+    // Langsung ganti array imageList dengan URL foto yang diinginkan (termasuk dari Google Photos jika link public)
+    // --------------------------------------------------------------
+    const imageList = [
+        "https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1588636104886-f4955b273413?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1590077428593-a55bb07c4665?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1578749556568-bc2c8e6cb3fd?auto=format&fit=crop&w=1000&q=80"
+        // 🔁 TAMBAHKAN URL FOTO LAIN DI SINI, CONTOH:
+        // "https://photos.fife.usercontent.google.com/...", 
+        // pastikan tautan bisa diakses public (tanpa login) agar muncul.
+    ];
+
+    let currentIndex = 0;
+    const slideImg = document.getElementById("mainSlide");
+    const prevBtn = document.getElementById("prevSlide");
+    const nextBtn = document.getElementById("nextSlide");
+    const dotContainer = document.getElementById("dotIndicator");
+    let autoInterval;
+
+    function updateSlide() {
+        if (imageList.length > 0 && slideImg) {
+            slideImg.src = imageList[currentIndex];
+        }
+        updateDots();
+    }
+
+    function updateDots() {
+        if (!dotContainer) return;
+        dotContainer.innerHTML = "";
+        for (let i = 0; i < imageList.length; i++) {
+            const dot = document.createElement("span");
+            dot.classList.add("dot");
+            if (i === currentIndex) dot.classList.add("active");
+            dot.addEventListener("click", (function(idx) {
+                return function() {
+                    currentIndex = idx;
+                    updateSlide();
+                    resetAutoTimer();
+                };
+            })(i));
+            dotContainer.appendChild(dot);
+        }
+    }
+
+    function nextSlide() {
+        if (imageList.length === 0) return;
+        currentIndex = (currentIndex + 1) % imageList.length;
+        updateSlide();
+        resetAutoTimer();
+    }
+
+    function prevSlide() {
+        if (imageList.length === 0) return;
+        currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
+        updateSlide();
+        resetAutoTimer();
+    }
+
+    function startAutoTimer() {
+        autoInterval = setInterval(() => {
+            nextSlide();
+        }, 5000);
+    }
+    function resetAutoTimer() {
+        clearInterval(autoInterval);
+        startAutoTimer();
+    }
+
+    if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+    if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+    
+    if (imageList.length) {
+        startAutoTimer();
+        updateSlide();
+    } else {
+        if(slideImg) slideImg.src = "https://placehold.co/1000x400/0a0f0a/2eff7a?text=Ganti+dengan+URL+Foto+Grup";
+    }
+
+    // untuk TikTok embed apabila script belum sempurna
+    if (window.TikTokEmbed) window.TikTokEmbed.load();
+    else {
+        const script = document.createElement('script');
+        script.src = "https://www.tiktok.com/embed.js";
+        script.async = true;
+        document.body.appendChild(script);
+    }
+    console.log("✅ HACKER MODE aktif | slideshow bisa diganti foto via array imageList");
+</script>
+</body>
+</html>
