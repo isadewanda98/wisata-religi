@@ -112,19 +112,28 @@
             font-weight: bold;
         }
 
-        /* slideshow modern */
+        /* slideshow modern - DIPERBAIKI agar gambar tidak terpotong */
         .slideshow-border {
             border: 1px solid #1f9f2f;
             border-radius: 6px;
             overflow: hidden;
             background: #000;
         }
+        .slide-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            min-height: 400px;
+        }
         .slide-img {
-            width: 100%;
+            width: auto;
+            max-width: 100%;
             height: auto;
-            max-height: 450px;
-            object-fit: cover;
+            max-height: 500px;
+            object-fit: contain;
             display: block;
+            margin: 0 auto;
             filter: grayscale(20%) brightness(0.9) contrast(1.1);
             transition: filter 0.3s ease;
         }
@@ -249,6 +258,8 @@
             .shell-body { padding: 15px; }
             .ascii-title { font-size: 1.4rem; }
             .nav-btn { padding: 6px 12px; }
+            .slide-img { max-height: 350px; }
+            .slide-container { min-height: 280px; }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -338,7 +349,7 @@
     // SLIDESHOW SCRIPT
     // --------------------------------------------------------------
     const imageList = [
-        "https://raw.githubusercontent.com/isadewanda98/wisata-religi/10ac80a19dba76db1cdfc22af4c2446635fc83ae/p/japar.jpeg?auto=format&fit=crop&w=1000&q=80",
+        "https://raw.githubusercontent.com/isadewanda98/wisata-religi/10ac80a19dba76db1cdfc22af4c2446635fc83ae/p/japar.jpeg",
         "https://images.unsplash.com/photo-1588636104886-f4955b273413?auto=format&fit=crop&w=1000&q=80",
         "https://images.unsplash.com/photo-1590077428593-a55bb07c4665?auto=format&fit=crop&w=1000&q=80",
         "https://images.unsplash.com/photo-1578749556568-bc2c8e6cb3fd?auto=format&fit=crop&w=1000&q=80"
